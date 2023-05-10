@@ -18,10 +18,63 @@ function script(){
         occupied: false},
     ];
 
-    const inputs = [1350, 380, 960];
+    const inputs = [1039];
+
+    //Dynamic input V
+    //Dynamic show input V
+    //CSS for both above
+    //After hit the button, run all algor to the input
+    //After ran use the itens array as base to render the screen
 
 
+    const addButtonInput = document.getElementById('add-button');
+    const arrayInput = document.getElementById('array-input');
+    const container = document.getElementById("container");
+    const sizeColumn = document.querySelectorAll('.memory-space'); 
+    sizeColumn.reverse()
+    console.log();
 
+    arrayInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          addToArray();
+        }
+      });    
+    addButtonInput.addEventListener("click", () => {
+        addToArray();
+        //run fits
+        //find correct place in table
+        //render in the table
+      });
+
+    function addToArray() {
+        //Converte o texto para um valor numérico
+        let value = parseInt(arrayInput.value);
+    
+        //Push no valor para o array
+        inputs.push(value);
+        
+        //Caso o input não esteja vazio, cria uma box;
+        if(arrayInput.value != '') createBox(value);
+    
+        clearInput();
+        
+        console.log(inputs);
+      }
+
+    function createBox(value){
+        container.innerHTML += `<div class="box">
+                <span class="boxValue">
+                `+value+`
+                </span>
+        </div> `
+      }
+      function clearInput(){
+        arrayInput.value = '';
+      }
+
+//==========================================================================
+    //Algorithm Functions
+//==========================================================================
     function firstF(){
         let i = 0;
 
@@ -108,12 +161,7 @@ function script(){
         }
     }
 
-    worstF();
-
-
-
-
-function resetArray(){
+    function resetArray(){
     itens = [
         {value: 1090,
         occupied: false},
@@ -133,4 +181,5 @@ function resetArray(){
         occupied: false},
     ];
 }
+
 }//Dom
