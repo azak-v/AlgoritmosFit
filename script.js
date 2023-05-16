@@ -30,10 +30,27 @@ function script(){
     const addButtonInput = document.getElementById('add-button');
     const arrayInput = document.getElementById('array-input');
     const container = document.getElementById("container");
-    const sizeColumn = document.querySelectorAll('.memory-space'); 
-    sizeColumn.reverse()
-    console.log();
 
+
+
+    //Get the NodeList in columns and convert to array.
+    const sizeColumnNl = document.querySelectorAll('.memory-space'); 
+    const ffColumnNl = document.querySelectorAll('.ff-column'); 
+    const bfColumnNl = document.querySelectorAll('.bf-column'); 
+    const wfColumnNl = document.querySelectorAll('.wf-column');
+
+    let sizeColumnArr = convertNodelistAndReverse(sizeColumnNl);
+    let ffColumnArr = convertNodelistAndReverse(ffColumnNl);
+    let bfColumnArr = convertNodelistAndReverse(bfColumnNl);
+    let wfColumnArr = convertNodelistAndReverse(wfColumnNl);
+
+    console.log(sizeColumnArr);
+    console.log(ffColumnArr);
+    console.log(bfColumnArr);
+    console.log(wfColumnArr);
+    //================================
+
+    
     arrayInput.addEventListener("keydown", function (e) {
         if (e.key === "Enter") {
           addToArray();
@@ -60,6 +77,12 @@ function script(){
         
         console.log(inputs);
       }
+
+      function convertNodelistAndReverse(nodelist){
+        let columnArr = Array.from(nodelist);
+        let reverseColumnArr =  columnArr.reverse();
+        return reverseColumnArr;
+    }
 
     function createBox(value){
         container.innerHTML += `<div class="box">
